@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:imdb_bloc/models/movie.dart';
-import 'package:imdb_bloc/repositories/movie_repository.dart';
+import 'package:imdb_bloc/feature/movies/repository/movie_repository.dart';
 import 'package:meta/meta.dart';
 
 part 'movie_event.dart';

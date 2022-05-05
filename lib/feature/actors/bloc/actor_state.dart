@@ -7,7 +7,9 @@ abstract class ActorState {}
 
 class ActorInitial extends ActorState {}
 
-class LoadingState extends ActorState {}
+class LoadingState extends ActorState {
+  LoadingState();
+}
 
 class ActorLoadedState extends ActorState {
   APaginator apaginators;
