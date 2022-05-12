@@ -68,13 +68,20 @@ class _ActorScreenState extends State<ActorScreen> {
             controller: _editingController,
             onChanged: (value) {
               _debouncer.run(() {
+                currentPage = 1;
                 currentSearch = _editingController.text;
                 actors = [];
-                _actorBloc.add(onSearchChange());
+                _actorBloc.add(ActorSearchEvent(
+                  currentSearch: _editingController.text,
+                  currentPage: currentPage,
+                ));
                 if (currentSearch.isEmpty) {
-                  currentPage = 1;
-                  _actorBloc.add(onSearchChange());
+                  //currentPage = 1;
                   print(currentPage);
+                  _actorBloc.add(ActorSearchEvent(
+                    currentSearch: _editingController.text,
+                    currentPage: 1,
+                  ));
                 }
               });
             },
@@ -127,13 +134,6 @@ class _ActorScreenState extends State<ActorScreen> {
           ),
         ],
       ),
-    );
-  }
-
-  ActorSearchEvent onSearchChange() {
-    return ActorSearchEvent(
-      currentSearch: _editingController.text,
-      currentPage: currentPage,
     );
   }
 
