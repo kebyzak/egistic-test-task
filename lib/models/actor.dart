@@ -15,6 +15,8 @@ class Actor {
         hairColor: json["hair_color"],
       );
 
+  get title => null;
+
   static List<Actor> fromList(List jsonlist) {
     List<Actor> actorsList = [];
     for (var item in jsonlist) {

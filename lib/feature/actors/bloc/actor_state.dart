@@ -12,8 +12,8 @@ class LoadingState extends ActorState {
 }
 
 class ActorLoadedState extends ActorState {
-  APaginator apaginators;
-  ActorLoadedState({required this.apaginators});
+  Paginator paginators;
+  ActorLoadedState({required this.paginators});
 }
 
 class FailedToLoadState extends ActorState {

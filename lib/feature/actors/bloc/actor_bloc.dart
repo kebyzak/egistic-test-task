@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:imdb_bloc/models/a_paginator.dart';
+import 'package:imdb_bloc/models/paginator.dart';
 import 'package:imdb_bloc/feature/actors/repository/actor_repository.dart';
 
 part 'actor_event.dart';
@@ -10,6 +10,6 @@ class ActorBloc extends Bloc<ActorEvent, ActorState> {
   final _actorRepository = ActorRepository();
 
   ActorBloc() : super(ActorInitial()) {
-    on<ActorLoadEvent>(_actorRepository.getActors);
+    on<ActorSearchEvent>(_actorRepository.getActors);
   }
 }

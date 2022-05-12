@@ -11,5 +11,6 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
 
   MovieBloc() : super(LoadingState()) {
     on<MovieLoadEvent>(_movieRepository.getMovies);
+    on<MovieSearchEvent>(_movieRepository.searchMovies);
   }
 }
