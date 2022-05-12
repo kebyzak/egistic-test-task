@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imdb_bloc/const.dart';
 import 'package:imdb_bloc/feature/movies/bloc/movie_bloc.dart';
+import 'package:imdb_bloc/feature/movies/ui/movie_detail.dart';
 
 class MovieScreen extends StatefulWidget {
   const MovieScreen({Key? key}) : super(key: key);
@@ -95,9 +96,15 @@ class _MovieScreenState extends State<MovieScreen> {
                       style: (TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold)),
                     ),
-                    subtitle: Text(
-                      movies[index].director,
-                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => MovieDetail(
+                            movieDetail: movies[index],
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 );
               },

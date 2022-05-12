@@ -34,17 +34,26 @@ class Movie {
   Movie({
     required this.title,
     required this.episodeId,
+    required this.openingCrawl,
     required this.director,
+    required this.producer,
+    required this.releaseDate,
   });
 
   String title;
   int episodeId;
+  String openingCrawl;
   String director;
+  String producer;
+  String releaseDate;
 
   factory Movie.fromJson(Map<String, dynamic> json) => Movie(
         title: json["title"],
         episodeId: json["episode_id"],
+        openingCrawl: json["opening_crawl"],
         director: json["director"],
+        producer: json["producer"],
+        releaseDate: json["release_date"],
       );
 
   static List<Movie> fromList(List jsonlist) {
@@ -58,6 +67,9 @@ class Movie {
   Map<String, dynamic> toJson() => {
         "title": title,
         "episode_id": episodeId,
+        "opening_crawl": openingCrawl,
         "director": director,
+        "producer": producer,
+        "release_date": releaseDate,
       };
 }

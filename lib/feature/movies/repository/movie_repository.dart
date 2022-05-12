@@ -31,4 +31,17 @@ class MovieRepository {
       throw Exception('failed');
     }
   }
+
+  Future<void> extractMovie(
+      MovieExtractEvent event, Emitter<MovieState> emit) async {
+    emit(LoadingState());
+    final response = await get(
+        Uri.parse("https://swapi.dev/api/films/${event.currentMovie}"));
+    if (response.statusCode == 200) {
+      List<Movie> movies = Movie.fromList(jsonDecode(response.body)['results']);
+      emit(MovieLoadedState(movies: movies));
+    } else {
+      throw Exception('failed');
+    }
+  }
 }
