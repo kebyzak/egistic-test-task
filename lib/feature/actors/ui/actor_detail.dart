@@ -10,7 +10,7 @@ class ActorDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Movie Description'),
+        title: const Text('Actor Description'),
         backgroundColor: Colors.blueAccent,
       ),
       body: SingleChildScrollView(
@@ -45,7 +45,7 @@ class ActorDetailCard extends StatelessWidget {
         ),
       ),
       elevation: 8,
-      shadowColor: Colors.redAccent,
+      shadowColor: Colors.blueAccent,
       margin: const EdgeInsets.all(10),
       shape: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
