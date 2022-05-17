@@ -46,13 +46,12 @@ class _MovieAppState extends State<MovieApp> {
             showUnselectedLabels: false,
             type: BottomNavigationBarType.fixed,
             onTap: (index) => setState(() => currentIndex = index),
-            // ignore: prefer_const_literals_to_create_immutables
-            items: [
-              const BottomNavigationBarItem(
+            items: const [
+              BottomNavigationBarItem(
                 icon: Icon(Icons.movie),
                 label: 'movies',
               ),
-              const BottomNavigationBarItem(
+              BottomNavigationBarItem(
                 icon: Icon(Icons.people),
                 label: 'actors',
               ),
