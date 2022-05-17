@@ -14,6 +14,11 @@ class MovieLoadedState extends MovieState {
   MovieLoadedState({required this.movies});
 }
 
+class MovieIdLoadedState extends MovieState {
+  Movie movieById;
+  MovieIdLoadedState({required this.movieById});
+}
+
 class FailedToLoadState extends MovieState {
   String error;
   FailedToLoadState({required this.error});

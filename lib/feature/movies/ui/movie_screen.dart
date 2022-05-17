@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imdb_bloc/const.dart';
 import 'package:imdb_bloc/feature/movies/bloc/movie_bloc.dart';
-import 'package:imdb_bloc/feature/movies/ui/movie_detail.dart';
+import 'package:imdb_bloc/feature/movies/ui/movie_detail_g.dart';
 
 class MovieScreen extends StatefulWidget {
   const MovieScreen({Key? key}) : super(key: key);
@@ -54,7 +54,6 @@ class _MovieScreenState extends State<MovieScreen> {
             onChanged: (value) {
               _debouncer.run(() {
                 currentSearch = _editingController.text;
-                print(currentSearch);
                 movies = [];
                 _movieBloc.add(MovieSearchEvent(
                   currentSearch: _editingController.text,
@@ -82,6 +81,7 @@ class _MovieScreenState extends State<MovieScreen> {
             if (state is LoadingState) {
               return const Center(child: CircularProgressIndicator());
             }
+
             return ListView.builder(
               itemCount: movies.length,
               itemBuilder: (context, index) {
@@ -99,7 +99,8 @@ class _MovieScreenState extends State<MovieScreen> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => MovieDetail(
+                          builder: (context) => MovieDetailG(
+                            //index: index,
                             movieDetail: movies[index],
                           ),
                         ),

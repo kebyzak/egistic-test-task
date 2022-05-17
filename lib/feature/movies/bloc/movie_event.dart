@@ -12,7 +12,7 @@ class MovieSearchEvent extends MovieEvent {
 }
 
 // ignore: must_be_immutable
-class MovieExtractEvent extends MovieEvent {
-  String currentMovie;
-  MovieExtractEvent({required this.currentMovie});
+class MovieByIdEvent extends MovieEvent {
+  int currentId;
+  MovieByIdEvent({required this.currentId});
 }

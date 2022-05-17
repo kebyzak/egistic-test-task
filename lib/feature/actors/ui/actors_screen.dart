@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imdb_bloc/const.dart';
 import 'package:imdb_bloc/feature/actors/bloc/actor_bloc.dart';
+import 'package:imdb_bloc/feature/actors/ui/actor_detail.dart';
 import 'package:imdb_bloc/models/actor.dart';
 
 class ActorScreen extends StatefulWidget {
@@ -50,7 +51,6 @@ class _ActorScreenState extends State<ActorScreen> {
           currentSearch: _editingController.text,
           currentPage: currentPage,
         ));
-        print(currentPage);
       }
     });
   }
@@ -76,8 +76,6 @@ class _ActorScreenState extends State<ActorScreen> {
                   currentPage: currentPage,
                 ));
                 if (currentSearch.isEmpty) {
-                  //currentPage = 1;
-                  print(currentPage);
                   _actorBloc.add(ActorSearchEvent(
                     currentSearch: _editingController.text,
                     currentPage: 1,
@@ -106,6 +104,15 @@ class _ActorScreenState extends State<ActorScreen> {
                     subtitle: Text(
                       actors[index].birthYear,
                     ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ActorDetail(
+                            actorDetail: actors[index],
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 );
               },

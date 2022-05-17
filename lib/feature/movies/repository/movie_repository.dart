@@ -32,14 +32,14 @@ class MovieRepository {
     }
   }
 
-  Future<void> extractMovie(
-      MovieExtractEvent event, Emitter<MovieState> emit) async {
+  Future<void> getMovieDetail(
+      MovieByIdEvent event, Emitter<MovieState> emit) async {
     emit(LoadingState());
-    final response = await get(
-        Uri.parse("https://swapi.dev/api/films/${event.currentMovie}"));
-    if (response.statusCode == 200) {
-      List<Movie> movies = Movie.fromList(jsonDecode(response.body)['results']);
-      emit(MovieLoadedState(movies: movies));
+    final detailResponse =
+        await get(Uri.parse("https://swapi.dev/api/films/${event.currentId}"));
+    if (detailResponse.statusCode == 200) {
+      Movie movieById = Movie.fromJson(jsonDecode(detailResponse.body));
+      emit(MovieIdLoadedState(movieById: movieById));
     } else {
       throw Exception('failed');
     }
